@@ -24,6 +24,9 @@
           }"
           @mousedown.self="onMouseDownDimmed"
           @mouseup="onMouseUpDimmed"
+          @dragstart="Log"
+          @drag="Log"
+          @dragend="Log"
         >
           <slot :emitClose="emitClose" />
           <slot name="close" />
@@ -144,7 +147,11 @@ export default defineComponent({
       if (close.value) close.value();
     };
 
+    const Log=(event:any)=>{
+      console.log(event);
+    }
     return {
+      Log,
       CLASS_NAME,
       emitClose,
       inserted,

@@ -24,6 +24,7 @@ declare const _sfc_main: import("vue").DefineComponent<{
         default: () => {};
     };
 }, {
+    Log: (event: any) => void;
     CLASS_NAME: string;
     emitClose: () => void;
     inserted: import("vue").Ref<boolean>;
