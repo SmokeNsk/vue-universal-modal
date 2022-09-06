@@ -120,13 +120,13 @@ export default defineComponent({
 
     const onTransitionEmit = {
       beforeEnter: () => context.emit('before-enter'),
-      enter: () => context.emit('enter'),
-      afterEnter: () => context.emit('after-enter'),
+      enter: () => context.emit('enter',modalRef.value),
+      afterEnter: () => context.emit('after-enter',modalRef.value),
       enterCancelled: () => context.emit('enter-cancelled'),
-      beforeLeave: () => context.emit('before-leave'),
-      leave: () => context.emit('leave'),
+      beforeLeave: () => context.emit('before-leave',modalRef.value),
+      leave: () => context.emit('leave',modalRef.value),
       afterLeave: () => {
-        context.emit('after-leave');
+        context.emit('after-leave',modalRef.value);
         if (modelValue.value === false) {
           inserted.value = false;
         }
