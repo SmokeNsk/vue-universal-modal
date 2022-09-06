@@ -121,7 +121,7 @@ export default defineComponent({
     const onTransitionEmit = {
       beforeEnter: () => context.emit('before-enter',modalRef.value),
       enter: () => context.emit('enter',modalRef.value),
-      afterEnter: () => context.emit('after-enter',{targetRef:modalRef,close:close}),
+      afterEnter: () => context.emit('after-enter',{targetRef:modalRef,close:props.close}),
       enterCancelled: () => context.emit('enter-cancelled',modalRef.value),
       beforeLeave: () => context.emit('before-leave',modalRef.value),
       leave: () => context.emit('leave',modalRef.value),
