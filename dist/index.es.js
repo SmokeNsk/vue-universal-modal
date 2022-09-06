@@ -1,12 +1,12 @@
-import { onMounted as e, watch as t, nextTick as o, onUnmounted as l, inject as a, computed as n, defineComponent as s, toRefs as i, ref as r, openBlock as u, createBlock as d, Teleport as v, createVNode as c, Transition as m, mergeProps as f, toHandlers as p, withCtx as M, withDirectives as b, createElementVNode as C, normalizeClass as w, normalizeStyle as g, withModifiers as y, renderSlot as D, vShow as h, createCommentVNode as E, readonly as k } from "vue";
+import { onMounted as e, watch as t, nextTick as o, onUnmounted as l, inject as a, computed as n, defineComponent as s, toRefs as i, ref as r, openBlock as u, createBlock as d, Teleport as v, createVNode as c, Transition as m, mergeProps as f, toHandlers as p, withCtx as M, withDirectives as b, createElementVNode as C, normalizeClass as g, normalizeStyle as w, withModifiers as y, renderSlot as D, vShow as h, createCommentVNode as E, readonly as k } from "vue";
 const A = ({ modalRef: a2, latest: n2, show: s2 }) => {
   let i2;
   function r2(e2) {
-    const t2 = e2.target.closest(`.${R}`);
+    const t2 = e2.target.closest(`.${N}`);
     if (!n2.value)
       return;
     if (!t2 || t2 !== a2.value) {
-      if (t2 && !t2.classList.contains(`${R}-show`))
+      if (t2 && !t2.classList.contains(`${N}-show`))
         return;
       i2 = e2.target;
     }
@@ -53,7 +53,7 @@ const L = ({ close: t2, closeClickDimmed: o2, closeKeyCode: a2, latest: n2 }) =>
   return { onMouseDownDimmed: i2, onMouseUpDimmed: r2 };
 };
 const S = ({ modalRef: e2, show: l2 }) => {
-  const { visibleModals: s2, addVisibleModals: i2, removeVisibleModals: r2 } = a(N);
+  const { visibleModals: s2, addVisibleModals: i2, removeVisibleModals: r2 } = a(x);
   const u2 = n(() => {
     const t2 = [...s2.value.values()];
     if (!t2.length || !e2.value)
@@ -79,9 +79,9 @@ var $ = (e2, t2) => {
     o2[e3] = l2;
   return o2;
 };
-const T = s({ inheritAttrs: false, props: { close: { type: Function, default: () => {
+const R = s({ inheritAttrs: false, props: { close: { type: Function, default: () => {
 } }, disabled: { type: Boolean, default: false }, modelValue: { type: Boolean, default: true }, options: { type: Object, default: () => ({}) } }, emits: ["before-enter", "enter", "after-enter", "enter-cancelled", "before-leave", "leave", "after-leave", "leave-cancelled"], setup(e2, o2) {
-  const { teleportTarget: l2 } = a(N);
+  const { teleportTarget: l2 } = a(x);
   const { close: n2, disabled: s2, options: u2, modelValue: d2 } = i(e2);
   const v2 = r(d2.value === void 0 ? true : d2.value);
   const c2 = r(null);
@@ -96,26 +96,26 @@ const T = s({ inheritAttrs: false, props: { close: { type: Function, default: ()
   const { latest: p2 } = S({ modalRef: c2, show: m2 });
   A({ latest: p2, modalRef: c2, show: m2 });
   const { onMouseDownDimmed: M2, onMouseUpDimmed: b2 } = L({ close: n2, closeClickDimmed: f2.closeClickDimmed, closeKeyCode: f2.closeKeyCode, latest: p2 });
-  const C2 = { beforeEnter: () => o2.emit("before-enter", c2.value), enter: () => o2.emit("enter", c2.value), afterEnter: () => o2.emit("after-enter", c2.value), enterCancelled: () => o2.emit("enter-cancelled", c2.value), beforeLeave: () => o2.emit("before-leave", c2.value), leave: () => o2.emit("leave", c2.value), afterLeave: () => {
+  const C2 = { beforeEnter: () => o2.emit("before-enter", c2.value), enter: () => o2.emit("enter", c2.value), afterEnter: () => o2.emit("after-enter", { targetRef: c2, close: n2 }), enterCancelled: () => o2.emit("enter-cancelled", c2.value), beforeLeave: () => o2.emit("before-leave", c2.value), leave: () => o2.emit("leave", c2.value), afterLeave: () => {
     o2.emit("after-leave", c2.value);
     if (d2.value === false)
       v2.value = false;
   }, leaveCancelled: () => o2.emit("leave-cancelled", c2.value) };
-  const w2 = () => {
+  const g2 = () => {
     if (n2.value)
       n2.value();
   };
-  return { CLASS_NAME: R, emitClose: w2, inserted: v2, latest: p2, mergeOptions: f2, modalRef: c2, onMouseDownDimmed: M2, onMouseUpDimmed: b2, onTransitionEmit: C2, show: m2, teleportTarget: l2, transition: f2.transition ? f2.transition / 1e3 + "s" : void 0 };
+  return { CLASS_NAME: N, emitClose: g2, inserted: v2, latest: p2, mergeOptions: f2, modalRef: c2, onMouseDownDimmed: M2, onMouseUpDimmed: b2, onTransitionEmit: C2, show: m2, teleportTarget: l2, transition: f2.transition ? f2.transition / 1e3 + "s" : void 0 };
 } });
-function V(e2, t2, o2, l2, a2, n2) {
+function T(e2, t2, o2, l2, a2, n2) {
   return e2.inserted ? (u(), d(v, { key: 0, to: e2.teleportTarget, disabled: e2.disabled }, [c(m, f({ appear: "", name: e2.CLASS_NAME }, p(e2.onTransitionEmit)), { default: M(() => {
     var _a;
-    return [b(C("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [C("div", { class: w(`${e2.CLASS_NAME}-content`), style: g({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[0] || (t2[0] = y((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[1] || (t2[1] = (...t3) => e2.onMouseUpDimmed && e2.onMouseUpDimmed(...t3)) }, [D(e2.$slots, "default", { emitClose: e2.emitClose }), D(e2.$slots, "close")], 38)], 16), [[h, e2.show]])];
+    return [b(C("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [C("div", { class: g(`${e2.CLASS_NAME}-content`), style: w({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[0] || (t2[0] = y((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[1] || (t2[1] = (...t3) => e2.onMouseUpDimmed && e2.onMouseUpDimmed(...t3)) }, [D(e2.$slots, "default", { emitClose: e2.emitClose }), D(e2.$slots, "close")], 38)], 16), [[h, e2.show]])];
   }), _: 3 }, 16, ["name"])], 8, ["to", "disabled"])) : E("", true);
 }
-var x = $(T, [["render", V]]);
-const N = "VueUniversalModal";
-const R = "vue-universal-modal";
+var V = $(R, [["render", T]]);
+const x = "VueUniversalModal";
+const N = "vue-universal-modal";
 const U = (e2, t2 = {}) => {
   const { teleportTarget: o2 = "", teleportComponent: l2 = "", teleportComponentId: a2 = "", modalComponent: n2 = "Modal" } = t2;
   if (!o2)
@@ -129,8 +129,8 @@ const U = (e2, t2 = {}) => {
   const u2 = (e3) => {
     s2.value.delete(e3);
   };
-  e2.provide(N, { teleportTarget: o2, visibleModals: k(s2), addVisibleModals: i2, removeVisibleModals: u2 });
-  e2.component(n2, x);
+  e2.provide(x, { teleportTarget: o2, visibleModals: k(s2), addVisibleModals: i2, removeVisibleModals: u2 });
+  e2.component(n2, V);
 };
 var K = { install: U };
-export { R as CLASS_NAME, N as PLUGIN_NAME, K as default };
+export { N as CLASS_NAME, x as PLUGIN_NAME, K as default };
