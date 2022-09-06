@@ -119,10 +119,10 @@ export default defineComponent({
     });
 
     const onTransitionEmit = {
-      beforeEnter: () => context.emit('before-enter'),
+      beforeEnter: () => context.emit('before-enter',modalRef.value),
       enter: () => context.emit('enter',modalRef.value),
       afterEnter: () => context.emit('after-enter',modalRef.value),
-      enterCancelled: () => context.emit('enter-cancelled'),
+      enterCancelled: () => context.emit('enter-cancelled',modalRef.value),
       beforeLeave: () => context.emit('before-leave',modalRef.value),
       leave: () => context.emit('leave',modalRef.value),
       afterLeave: () => {
@@ -131,7 +131,7 @@ export default defineComponent({
           inserted.value = false;
         }
       },
-      leaveCancelled: () => context.emit('leave-cancelled'),
+      leaveCancelled: () => context.emit('leave-cancelled',modalRef.value),
     };
 
     /**

@@ -1,11 +1,11 @@
-import { onMounted as e, watch as t, nextTick as o, onUnmounted as l, inject as n, computed as a, defineComponent as s, toRefs as i, ref as r, openBlock as u, createBlock as d, Teleport as c, createVNode as v, Transition as m, mergeProps as f, toHandlers as p, withCtx as M, withDirectives as b, createElementVNode as C, normalizeClass as w, normalizeStyle as g, withModifiers as y, renderSlot as D, vShow as h, createCommentVNode as E, readonly as k } from "vue";
-const A = ({ modalRef: n2, latest: a2, show: s2 }) => {
+import { onMounted as e, watch as t, nextTick as o, onUnmounted as l, inject as a, computed as n, defineComponent as s, toRefs as i, ref as r, openBlock as u, createBlock as d, Teleport as v, createVNode as c, Transition as m, mergeProps as f, toHandlers as p, withCtx as M, withDirectives as b, createElementVNode as C, normalizeClass as w, normalizeStyle as g, withModifiers as y, renderSlot as D, vShow as h, createCommentVNode as E, readonly as k } from "vue";
+const A = ({ modalRef: a2, latest: n2, show: s2 }) => {
   let i2;
   function r2(e2) {
     const t2 = e2.target.closest(`.${R}`);
-    if (!a2.value)
+    if (!n2.value)
       return;
-    if (!t2 || t2 !== n2.value) {
+    if (!t2 || t2 !== a2.value) {
       if (t2 && !t2.classList.contains(`${R}-show`))
         return;
       i2 = e2.target;
@@ -13,8 +13,8 @@ const A = ({ modalRef: n2, latest: a2, show: s2 }) => {
   }
   function u2(e2) {
     if (e2) {
-      if (n2.value)
-        n2.value.focus();
+      if (a2.value)
+        a2.value.focus();
     } else if (i2)
       i2.focus();
   }
@@ -28,7 +28,7 @@ const A = ({ modalRef: n2, latest: a2, show: s2 }) => {
     document.removeEventListener("click", r2);
   });
 };
-const L = ({ close: t2, closeClickDimmed: o2, closeKeyCode: n2, latest: a2 }) => {
+const L = ({ close: t2, closeClickDimmed: o2, closeKeyCode: a2, latest: n2 }) => {
   let s2 = null;
   function i2(e2) {
     s2 = e2.target;
@@ -39,22 +39,22 @@ const L = ({ close: t2, closeClickDimmed: o2, closeKeyCode: n2, latest: a2 }) =>
     s2 = null;
   }
   function u2(e2) {
-    if (e2.keyCode === n2 && a2.value)
+    if (e2.keyCode === a2 && n2.value)
       t2.value();
   }
   e(() => {
-    if (n2)
+    if (a2)
       document.addEventListener("keyup", u2);
   });
   l(() => {
-    if (n2)
+    if (a2)
       document.removeEventListener("keyup", u2);
   });
   return { onMouseDownDimmed: i2, onMouseUpDimmed: r2 };
 };
 const S = ({ modalRef: e2, show: l2 }) => {
-  const { visibleModals: s2, addVisibleModals: i2, removeVisibleModals: r2 } = n(N);
-  const u2 = a(() => {
+  const { visibleModals: s2, addVisibleModals: i2, removeVisibleModals: r2 } = a(N);
+  const u2 = n(() => {
     const t2 = [...s2.value.values()];
     if (!t2.length || !e2.value)
       return false;
@@ -81,34 +81,34 @@ var $ = (e2, t2) => {
 };
 const T = s({ inheritAttrs: false, props: { close: { type: Function, default: () => {
 } }, disabled: { type: Boolean, default: false }, modelValue: { type: Boolean, default: true }, options: { type: Object, default: () => ({}) } }, emits: ["before-enter", "enter", "after-enter", "enter-cancelled", "before-leave", "leave", "after-leave", "leave-cancelled"], setup(e2, o2) {
-  const { teleportTarget: l2 } = n(N);
-  const { close: a2, disabled: s2, options: u2, modelValue: d2 } = i(e2);
-  const c2 = r(d2.value === void 0 ? true : d2.value);
-  const v2 = r(null);
+  const { teleportTarget: l2 } = a(N);
+  const { close: n2, disabled: s2, options: u2, modelValue: d2 } = i(e2);
+  const v2 = r(d2.value === void 0 ? true : d2.value);
+  const c2 = r(null);
   const m2 = r(!s2.value);
   const f2 = { transition: 300, closeClickDimmed: true, closeKeyCode: 27, styleModalContent: {}, ...u2.value };
   t([() => d2.value, () => s2.value], () => {
     const e3 = d2.value && !s2.value;
     m2.value = e3;
     if (d2.value)
-      c2.value = d2.value;
+      v2.value = d2.value;
   }, { immediate: true });
-  const { latest: p2 } = S({ modalRef: v2, show: m2 });
-  A({ latest: p2, modalRef: v2, show: m2 });
-  const { onMouseDownDimmed: M2, onMouseUpDimmed: b2 } = L({ close: a2, closeClickDimmed: f2.closeClickDimmed, closeKeyCode: f2.closeKeyCode, latest: p2 });
-  const C2 = { beforeEnter: () => o2.emit("before-enter"), enter: () => o2.emit("enter"), afterEnter: () => o2.emit("after-enter"), enterCancelled: () => o2.emit("enter-cancelled"), beforeLeave: () => o2.emit("before-leave"), leave: () => o2.emit("leave"), afterLeave: () => {
-    o2.emit("after-leave");
+  const { latest: p2 } = S({ modalRef: c2, show: m2 });
+  A({ latest: p2, modalRef: c2, show: m2 });
+  const { onMouseDownDimmed: M2, onMouseUpDimmed: b2 } = L({ close: n2, closeClickDimmed: f2.closeClickDimmed, closeKeyCode: f2.closeKeyCode, latest: p2 });
+  const C2 = { beforeEnter: () => o2.emit("before-enter"), enter: () => o2.emit("enter", c2.value), afterEnter: () => o2.emit("after-enter", c2.value), enterCancelled: () => o2.emit("enter-cancelled"), beforeLeave: () => o2.emit("before-leave", c2.value), leave: () => o2.emit("leave", c2.value), afterLeave: () => {
+    o2.emit("after-leave", c2.value);
     if (d2.value === false)
-      c2.value = false;
+      v2.value = false;
   }, leaveCancelled: () => o2.emit("leave-cancelled") };
   const w2 = () => {
-    if (a2.value)
-      a2.value();
+    if (n2.value)
+      n2.value();
   };
-  return { CLASS_NAME: R, emitClose: w2, inserted: c2, latest: p2, mergeOptions: f2, modalRef: v2, onMouseDownDimmed: M2, onMouseUpDimmed: b2, onTransitionEmit: C2, show: m2, teleportTarget: l2, transition: f2.transition ? f2.transition / 1e3 + "s" : void 0 };
+  return { CLASS_NAME: R, emitClose: w2, inserted: v2, latest: p2, mergeOptions: f2, modalRef: c2, onMouseDownDimmed: M2, onMouseUpDimmed: b2, onTransitionEmit: C2, show: m2, teleportTarget: l2, transition: f2.transition ? f2.transition / 1e3 + "s" : void 0 };
 } });
-function V(e2, t2, o2, l2, n2, a2) {
-  return e2.inserted ? (u(), d(c, { key: 0, to: e2.teleportTarget, disabled: e2.disabled }, [v(m, f({ appear: "", name: e2.CLASS_NAME }, p(e2.onTransitionEmit)), { default: M(() => {
+function V(e2, t2, o2, l2, a2, n2) {
+  return e2.inserted ? (u(), d(v, { key: 0, to: e2.teleportTarget, disabled: e2.disabled }, [c(m, f({ appear: "", name: e2.CLASS_NAME }, p(e2.onTransitionEmit)), { default: M(() => {
     var _a;
     return [b(C("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [C("div", { class: w(`${e2.CLASS_NAME}-content`), style: g({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[0] || (t2[0] = y((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[1] || (t2[1] = (...t3) => e2.onMouseUpDimmed && e2.onMouseUpDimmed(...t3)) }, [D(e2.$slots, "default", { emitClose: e2.emitClose }), D(e2.$slots, "close")], 38)], 16), [[h, e2.show]])];
   }), _: 3 }, 16, ["name"])], 8, ["to", "disabled"])) : E("", true);
@@ -117,10 +117,10 @@ var x = $(T, [["render", V]]);
 const N = "VueUniversalModal";
 const R = "vue-universal-modal";
 const U = (e2, t2 = {}) => {
-  const { teleportTarget: o2 = "", teleportComponent: l2 = "", teleportComponentId: n2 = "", modalComponent: a2 = "Modal" } = t2;
+  const { teleportTarget: o2 = "", teleportComponent: l2 = "", teleportComponentId: a2 = "", modalComponent: n2 = "Modal" } = t2;
   if (!o2)
     return;
-  if (l2 || n2)
+  if (l2 || a2)
     return;
   const s2 = r(/* @__PURE__ */ new Set());
   const i2 = (e3) => {
@@ -130,7 +130,7 @@ const U = (e2, t2 = {}) => {
     s2.value.delete(e3);
   };
   e2.provide(N, { teleportTarget: o2, visibleModals: k(s2), addVisibleModals: i2, removeVisibleModals: u2 });
-  e2.component(a2, x);
+  e2.component(n2, x);
 };
 var K = { install: U };
 export { R as CLASS_NAME, N as PLUGIN_NAME, K as default };
