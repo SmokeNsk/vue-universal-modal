@@ -96,11 +96,11 @@ const T = s({ inheritAttrs: false, props: { close: { type: Function, default: ()
   const { latest: p2 } = S({ modalRef: c2, show: m2 });
   A({ latest: p2, modalRef: c2, show: m2 });
   const { onMouseDownDimmed: M2, onMouseUpDimmed: b2 } = L({ close: n2, closeClickDimmed: f2.closeClickDimmed, closeKeyCode: f2.closeKeyCode, latest: p2 });
-  const C2 = { beforeEnter: () => o2.emit("before-enter"), enter: () => o2.emit("enter", c2.value), afterEnter: () => o2.emit("after-enter", c2.value), enterCancelled: () => o2.emit("enter-cancelled"), beforeLeave: () => o2.emit("before-leave", c2.value), leave: () => o2.emit("leave", c2.value), afterLeave: () => {
+  const C2 = { beforeEnter: () => o2.emit("before-enter", c2.value), enter: () => o2.emit("enter", c2.value), afterEnter: () => o2.emit("after-enter", c2.value), enterCancelled: () => o2.emit("enter-cancelled", c2.value), beforeLeave: () => o2.emit("before-leave", c2.value), leave: () => o2.emit("leave", c2.value), afterLeave: () => {
     o2.emit("after-leave", c2.value);
     if (d2.value === false)
       v2.value = false;
-  }, leaveCancelled: () => o2.emit("leave-cancelled") };
+  }, leaveCancelled: () => o2.emit("leave-cancelled", c2.value) };
   const w2 = () => {
     if (n2.value)
       n2.value();
