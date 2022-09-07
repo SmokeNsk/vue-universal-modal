@@ -197,7 +197,8 @@ export default defineComponent({
   text-align: left;
 
   &:not(.vue-universal-modal-latest) {
-    background: none;
+    //background: none;
+    z-index: 1000;
   }
 }
 
