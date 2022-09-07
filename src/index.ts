@@ -11,8 +11,8 @@ declare module '@vue/runtime-core' {
 
 interface PluginOptions {
   teleportTarget?: string;
-  teleportComponent?: string;
-  teleportComponentId?: string;
+  // teleportComponent?: string;
+  // teleportComponentId?: string;
   modalComponent?: string;
 }
 interface Provide {
@@ -31,8 +31,8 @@ const install: (app: App, options: PluginOptions) => void = (
 ) => {
   const {
     teleportTarget = '',
-    teleportComponent = '',
-    teleportComponentId = '',
+    // teleportComponent = '',
+    // teleportComponentId = '',
     modalComponent = 'Modal',
   } = options as PluginOptions;
 
@@ -40,11 +40,11 @@ const install: (app: App, options: PluginOptions) => void = (
     return console.error('teleportTarget is required.');
   }
 
-  if (teleportComponent || teleportComponentId) {
-    return console.error(
-      'teleportComponent, teleportComponentId was deprecated. use teleportTarget instead. (https://github.com/hoiheart/vue-universal-modal)',
-    );
-  }
+  // if (teleportComponent || teleportComponentId) {
+  //   return console.error(
+  //     'teleportComponent, teleportComponentId was deprecated. use teleportTarget instead. (https://github.com/hoiheart/vue-universal-modal)',
+  //   );
+  // }
 
   const visibleModals: Provide['visibleModals'] = ref(new Set());
   const addVisibleModals: Provide['addVisibleModals'] = el => {

@@ -1,5 +1,5 @@
 <template>
-  <teleport v-if="inserted" :to="teleportTarget" :disabled="disabled">
+  <teleport :to="teleportTarget" :disabled="disabled">
     <transition appear :name="CLASS_NAME" v-on="onTransitionEmit">
       <div
         v-show="show"
