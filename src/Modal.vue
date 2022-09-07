@@ -1,4 +1,5 @@
 <template>
+  <div>
   <teleport v-if="inserted" :to="teleportTarget" :disabled="disabled">
     <transition appear :name="CLASS_NAME" v-on="onTransitionEmit">
       <div
@@ -34,7 +35,7 @@
       </div>
     </transition>
   </teleport>
-  <div v-else >k</div>
+  </div>
 </template>
 
 <script lang="ts">
