@@ -7,9 +7,13 @@ interface MergeOptions {
     };
 }
 declare const _sfc_main: import("vue").DefineComponent<{
-    initialHeight: {
+    initialBreakpoint: {
         type: NumberConstructor;
         default: undefined;
+    };
+    breakpoints: {
+        type: ArrayConstructor;
+        default: never[];
     };
     swipe: {
         type: BooleanConstructor;
@@ -58,9 +62,13 @@ declare const _sfc_main: import("vue").DefineComponent<{
     teleportTarget: string;
     transition: string | undefined;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("before-enter" | "enter" | "after-enter" | "enter-cancelled" | "before-leave" | "leave" | "after-leave" | "leave-cancelled")[], "before-enter" | "enter" | "after-enter" | "enter-cancelled" | "before-leave" | "leave" | "after-leave" | "leave-cancelled", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    initialHeight: {
+    initialBreakpoint: {
         type: NumberConstructor;
         default: undefined;
+    };
+    breakpoints: {
+        type: ArrayConstructor;
+        default: never[];
     };
     swipe: {
         type: BooleanConstructor;
@@ -93,7 +101,8 @@ declare const _sfc_main: import("vue").DefineComponent<{
     "onLeave-cancelled"?: ((...args: any[]) => any) | undefined;
 }, {
     close: Function;
-    initialHeight: number;
+    initialBreakpoint: number;
+    breakpoints: unknown[];
     swipe: boolean;
     disabled: boolean;
     modelValue: boolean;

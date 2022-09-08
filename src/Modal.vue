@@ -26,7 +26,8 @@
             @mouseup.self="onMouseUpDimmed2"
             @touchmove.self="close()"
         >
-          <div class="modal modal-sheet " :style="{'--initialHeight': initialHeight?`${initialHeight}%`:'unset' }">
+          <div class="modal modal-sheet "
+               :style="{'--maxHeight': initialBreakpoint?`${Math.round(initialBreakpoint*100)}%`:'unset' }">
             <slot :emitClose="emitClose"/>
             <slot name="close"/>
           </div>
@@ -53,9 +54,13 @@ interface MergeOptions {
 export default defineComponent({
   inheritAttrs: false,
   props: {
-    initialHeight: {
+    initialBreakpoint: {
       type: Number,
       default: undefined
+    },
+    breakpoints: {
+      type: Array,
+      default: []
     },
     swipe: {
       type: Boolean,
@@ -242,7 +247,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 
 
-
 .vue-universal-modal-leave-from,
 .vue-universal-modal-enter-to {
   opacity: 1;
@@ -296,7 +300,7 @@ export default defineComponent({
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
   overflow: hidden;
-  height: var(--initialHeight,unset);
+  height: var(--maxHeight, unset);
 }
 
 /*.vue-universal-modal-enter-from,*/
