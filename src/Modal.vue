@@ -26,7 +26,7 @@
             @mouseup.self="onMouseUpDimmed2"
             @touchmove.self="close()"
         >
-          <div class="modal modal-sheet " :style="{height:initialHeight?initialHeight+'%':'unset' }">
+          <div class="modal modal-sheet " :style="{'--initialHeight': initialHeight?`${initialHeight}%`:'unset' }">
             <slot :emitClose="emitClose"/>
             <slot name="close"/>
           </div>
@@ -240,6 +240,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+
+
+
 .vue-universal-modal-leave-from,
 .vue-universal-modal-enter-to {
   opacity: 1;
@@ -280,6 +283,7 @@ export default defineComponent({
 }
 
 .modal {
+
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -292,6 +296,7 @@ export default defineComponent({
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
   overflow: hidden;
+  height: var(--initialHeight,unset);
 }
 
 /*.vue-universal-modal-enter-from,*/
