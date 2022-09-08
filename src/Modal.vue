@@ -23,10 +23,9 @@
             ...mergeOptions?.styleModalContent,
           }"
           @mousedown.self="onMouseDownDimmed"
-          @mouseup="onMouseUpDimmed"
- @touchend.self="Log"
+          @mouseup="onMouseUpDimmed2"
         >
-          <slot :emitClose="emitClose" class="vvvvv" />
+          <slot :emitClose="emitClose"/>
           <slot name="close" />
         </div>
       </div>
@@ -121,12 +120,18 @@ export default defineComponent({
 
     const { latest } = useOrder({ modalRef, show });
     useA11Y({ latest, modalRef, show });
+
     const { onMouseDownDimmed, onMouseUpDimmed } = useClose({
       close,
       closeClickDimmed: mergeOptions.closeClickDimmed,
       closeKeyCode: mergeOptions.closeKeyCode,
       latest,
     });
+    const onMouseUpDimmed2=(event :MouseEvent)=> {
+      onMouseUpDimmed(event);
+      console.error(event);
+      if (close.value) close.value();
+    };
 
     const onTransitionEmit = {
       beforeEnter: () => context.emit('before-enter',modalRef.value),
@@ -166,7 +171,7 @@ export default defineComponent({
       mergeOptions,
       modalRef,
       onMouseDownDimmed,
-      onMouseUpDimmed,
+      onMouseUpDimmed2,
       onTransitionEmit,
       show,
       teleportTarget,

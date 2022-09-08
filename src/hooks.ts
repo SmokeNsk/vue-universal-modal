@@ -25,7 +25,7 @@ type UseClose = ({
   latest: ComputedRef<boolean>;
 }) => {
   onMouseDownDimmed: (e: MouseEvent) => void;
-  onMouseUpDimmed: (e: MouseEvent) => void;
+  onMouseUpDimmed: (e: MouseEvent) =>  void;
 };
 
 type UseOrder = ({
