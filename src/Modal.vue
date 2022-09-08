@@ -26,7 +26,7 @@
             @mouseup.self="onMouseUpDimmed2"
             @touchmove.self="close()"
         >
-          <div class="modal modal-sheet " :style="{height:fullscreen?'100%':'unset' }">
+          <div class="modal modal-sheet " :style="{height:initialHeight?initialHeight+'%':'unset' }">
             <slot :emitClose="emitClose"/>
             <slot name="close"/>
           </div>
@@ -53,9 +53,9 @@ interface MergeOptions {
 export default defineComponent({
   inheritAttrs: false,
   props: {
-    fullscreen: {
-      type: Boolean,
-      default: false
+    initialHeight: {
+      type: Number,
+      default: undefined
     },
     swipe: {
       type: Boolean,
