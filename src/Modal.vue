@@ -24,11 +24,12 @@
           }"
           @mousedown.self="onMouseDownDimmed"
           @mouseup="onMouseUpDimmed2"
-          @touchstart.self="touchModalStart"
-          @touchmove.self="touchModalMove"
-          @touchend.self="touchModalEnd"
+
         >
-          <slot :emitClose="emitClose" @click="close()"/>
+          <slot :emitClose="emitClose"
+                @touchstart.self="touchModalStart"
+                @touchmove.self="touchModalMove"
+                @touchend.self="touchModalEnd"/>
           <slot name="close" />
         </div>
       </div>

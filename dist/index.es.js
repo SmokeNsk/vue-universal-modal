@@ -1,4 +1,4 @@
-import { onMounted as e, watch as t, nextTick as o, onUnmounted as l, inject as a, computed as n, defineComponent as s, toRefs as i, ref as u, openBlock as r, createBlock as d, Teleport as c, createVNode as m, Transition as v, mergeProps as f, toHandlers as M, withCtx as p, withDirectives as h, createElementVNode as y, normalizeClass as C, normalizeStyle as g, withModifiers as b, renderSlot as D, vShow as w, createCommentVNode as E, readonly as S } from "vue";
+import { onMounted as e, watch as t, nextTick as o, onUnmounted as l, inject as a, computed as n, defineComponent as s, toRefs as i, ref as u, openBlock as r, createBlock as d, Teleport as c, createVNode as m, Transition as v, mergeProps as f, toHandlers as M, withCtx as p, withDirectives as h, createElementVNode as y, normalizeClass as g, normalizeStyle as C, withModifiers as b, renderSlot as D, vShow as w, createCommentVNode as E, readonly as S } from "vue";
 const L = ({ modalRef: a2, latest: n2, show: s2 }) => {
   let i2;
   function u2(e2) {
@@ -28,7 +28,7 @@ const L = ({ modalRef: a2, latest: n2, show: s2 }) => {
     document.removeEventListener("click", u2);
   });
 };
-const k = ({ close: t2, closeClickDimmed: o2, closeKeyCode: a2, latest: n2 }) => {
+const A = ({ close: t2, closeClickDimmed: o2, closeKeyCode: a2, latest: n2 }) => {
   let s2 = null;
   function i2(e2) {
     s2 = e2.target;
@@ -52,7 +52,7 @@ const k = ({ close: t2, closeClickDimmed: o2, closeKeyCode: a2, latest: n2 }) =>
   });
   return { onMouseDownDimmed: i2, onMouseUpDimmed: u2 };
 };
-const A = ({ modalRef: e2, show: l2 }) => {
+const k = ({ modalRef: e2, show: l2 }) => {
   const { visibleModals: s2, addVisibleModals: i2, removeVisibleModals: u2 } = a(x);
   const r2 = n(() => {
     const t2 = [...s2.value.values()];
@@ -93,15 +93,15 @@ const B = s({ inheritAttrs: false, props: { fullscreen: { type: Boolean, default
     if (c2.value)
       m2.value = c2.value;
   }, { immediate: true });
-  const { latest: p2 } = A({ modalRef: v2, show: f2 });
+  const { latest: p2 } = k({ modalRef: v2, show: f2 });
   L({ latest: p2, modalRef: v2, show: f2 });
-  const { onMouseDownDimmed: h2, onMouseUpDimmed: y2 } = k({ close: s2, closeClickDimmed: M2.closeClickDimmed, closeKeyCode: M2.closeKeyCode, latest: p2 });
-  const C2 = (e3) => {
+  const { onMouseDownDimmed: h2, onMouseUpDimmed: y2 } = A({ close: s2, closeClickDimmed: M2.closeClickDimmed, closeKeyCode: M2.closeKeyCode, latest: p2 });
+  const g2 = (e3) => {
     y2(e3);
     if (s2.value)
       s2.value();
   };
-  const g2 = { beforeEnter: () => l2.emit("before-enter", v2.value), enter: () => l2.emit("enter", v2.value), afterEnter: () => l2.emit("after-enter", { targetRef: v2, close: e2.close }), enterCancelled: () => l2.emit("enter-cancelled", v2.value), beforeLeave: () => l2.emit("before-leave", v2.value), leave: () => l2.emit("leave", v2.value), afterLeave: () => {
+  const C2 = { beforeEnter: () => l2.emit("before-enter", v2.value), enter: () => l2.emit("enter", v2.value), afterEnter: () => l2.emit("after-enter", { targetRef: v2, close: e2.close }), enterCancelled: () => l2.emit("enter-cancelled", v2.value), beforeLeave: () => l2.emit("before-leave", v2.value), leave: () => l2.emit("leave", v2.value), afterLeave: () => {
     l2.emit("after-leave", v2.value);
     if (c2.value === false)
       m2.value = false;
@@ -134,12 +134,12 @@ const B = s({ inheritAttrs: false, props: { fullscreen: { type: Boolean, default
     } else
       document.getElementsByClassName("modal")[0].style.transitionDuration = "300ms";
   };
-  return { Log: D2, CLASS_NAME: R, emitClose: b2, inserted: m2, latest: p2, mergeOptions: M2, modalRef: v2, onMouseDownDimmed: h2, onMouseUpDimmed2: C2, touchModalStart: E2, touchModalMove: N2, touchModalEnd: T2, onTransitionEmit: g2, show: f2, teleportTarget: n2, transition: M2.transition ? M2.transition / 1e3 + "s" : void 0 };
+  return { Log: D2, CLASS_NAME: R, emitClose: b2, inserted: m2, latest: p2, mergeOptions: M2, modalRef: v2, onMouseDownDimmed: h2, onMouseUpDimmed2: g2, touchModalStart: E2, touchModalMove: N2, touchModalEnd: T2, onTransitionEmit: C2, show: f2, teleportTarget: n2, transition: M2.transition ? M2.transition / 1e3 + "s" : void 0 };
 } });
 function $(e2, t2, o2, l2, a2, n2) {
   return e2.inserted ? (r(), d(c, { key: 0, to: e2.teleportTarget, disabled: e2.disabled }, [m(v, f({ appear: "", name: e2.CLASS_NAME }, M(e2.onTransitionEmit)), { default: p(() => {
     var _a;
-    return [h(y("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [y("div", { class: C(`${e2.CLASS_NAME}-content`), style: g({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[1] || (t2[1] = b((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[2] || (t2[2] = (...t3) => e2.onMouseUpDimmed2 && e2.onMouseUpDimmed2(...t3)), onTouchstart: t2[3] || (t2[3] = b((...t3) => e2.touchModalStart && e2.touchModalStart(...t3), ["self"])), onTouchmove: t2[4] || (t2[4] = b((...t3) => e2.touchModalMove && e2.touchModalMove(...t3), ["self"])), onTouchend: t2[5] || (t2[5] = b((...t3) => e2.touchModalEnd && e2.touchModalEnd(...t3), ["self"])) }, [D(e2.$slots, "default", { emitClose: e2.emitClose, onClick: t2[0] || (t2[0] = (t3) => e2.close()) }), D(e2.$slots, "close")], 38)], 16), [[w, e2.show]])];
+    return [h(y("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [y("div", { class: g(`${e2.CLASS_NAME}-content`), style: C({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[3] || (t2[3] = b((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[4] || (t2[4] = (...t3) => e2.onMouseUpDimmed2 && e2.onMouseUpDimmed2(...t3)) }, [D(e2.$slots, "default", { emitClose: e2.emitClose, onTouchstart: t2[0] || (t2[0] = b((...t3) => e2.touchModalStart && e2.touchModalStart(...t3), ["self"])), onTouchmove: t2[1] || (t2[1] = b((...t3) => e2.touchModalMove && e2.touchModalMove(...t3), ["self"])), onTouchend: t2[2] || (t2[2] = b((...t3) => e2.touchModalEnd && e2.touchModalEnd(...t3), ["self"])) }), D(e2.$slots, "close")], 38)], 16), [[w, e2.show]])];
   }), _: 3 }, 16, ["name"])], 8, ["to", "disabled"])) : E("", true);
 }
 var _ = T(B, [["render", $]]);
