@@ -27,9 +27,9 @@
 
         >
           <slot :emitClose="emitClose"
-                @touchstart.self="touchModalStart"
-                @touchmove.self="touchModalMove"
-                @touchend.self="touchModalEnd"/>
+                @touchstart="touchModalStart"
+                @touchmove="touchModalMove"
+                @touchend="touchModalEnd"/>
           <slot name="close" />
         </div>
       </div>
