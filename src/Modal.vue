@@ -1,5 +1,4 @@
 <template>
-  <div>
   <teleport v-if="inserted" :to="teleportTarget" :disabled="disabled">
     <transition appear :name="CLASS_NAME" v-on="onTransitionEmit">
       <div
@@ -25,9 +24,7 @@
           }"
           @mousedown.self="onMouseDownDimmed"
           @mouseup="onMouseUpDimmed"
-          @dragstart="Log"
-          @drag="Log"
-          @dragend="Log"
+ @click="Log"
         >
           <slot :emitClose="emitClose" />
           <slot name="close" />
@@ -35,7 +32,6 @@
       </div>
     </transition>
   </teleport>
-  </div>
 </template>
 
 <script lang="ts">
@@ -55,6 +51,15 @@ interface MergeOptions {
 export default defineComponent({
   inheritAttrs: false,
   props: {
+    fullscreen:{
+      type:Boolean,
+      default:false
+    },
+    swipe:{
+      type:Boolean,
+      default:true
+    },
+
     close: {
       type: Function,
       default: () => undefined,

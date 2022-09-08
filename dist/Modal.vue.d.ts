@@ -7,6 +7,14 @@ interface MergeOptions {
     };
 }
 declare const _sfc_main: import("vue").DefineComponent<{
+    fullscreen: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    swipe: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     close: {
         type: FunctionConstructor;
         default: () => undefined;
@@ -47,6 +55,14 @@ declare const _sfc_main: import("vue").DefineComponent<{
     teleportTarget: string;
     transition: string | undefined;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("before-enter" | "enter" | "after-enter" | "enter-cancelled" | "before-leave" | "leave" | "after-leave" | "leave-cancelled")[], "before-enter" | "enter" | "after-enter" | "enter-cancelled" | "before-leave" | "leave" | "after-leave" | "leave-cancelled", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    fullscreen: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    swipe: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     close: {
         type: FunctionConstructor;
         default: () => undefined;
@@ -74,6 +90,8 @@ declare const _sfc_main: import("vue").DefineComponent<{
     "onLeave-cancelled"?: ((...args: any[]) => any) | undefined;
 }, {
     close: Function;
+    fullscreen: boolean;
+    swipe: boolean;
     disabled: boolean;
     modelValue: boolean;
     options: Record<string, any>;
