@@ -26,7 +26,7 @@
             @mouseup.self="onMouseUpDimmed2"
             @touchmove.self="close()"
         >
-          <div class="modal modal-sheet ">
+          <div class="modal modal-sheet " :style="{height:fullscreen?'100%':'unset' }">
             <slot :emitClose="emitClose"/>
             <slot name="close"/>
           </div>
