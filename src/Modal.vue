@@ -134,42 +134,6 @@ export default defineComponent({
       if (close.value) close.value();
     };
 
-
-    const onTransitionEmit = {
-      beforeEnter: () => context.emit('before-enter',modalRef.value),
-      enter: () => context.emit('enter',modalRef.value),
-      afterEnter: () => {
-        ((modalRef.value as any).querySelector(".modal")).addEventListener("touchstart",touchModalStart)
-        ((modalRef.value as any).querySelector(".modal")).addEventListener("touchmove",touchModalMove)
-        ((modalRef.value as any).querySelector(".modal")).addEventListener("touchend",touchModalEnd)
-        context.emit('after-enter',{targetRef:modalRef,close:props.close})
-      },
-      enterCancelled: () => context.emit('enter-cancelled',modalRef.value),
-      beforeLeave: () => context.emit('before-leave',modalRef.value),
-      leave: () => context.emit('leave',modalRef.value),
-      afterLeave: () => {
-        context.emit('after-leave',modalRef.value);
-        if (modelValue.value === false) {
-          inserted.value = false;
-        }
-      },
-      leaveCancelled: () => context.emit('leave-cancelled',modalRef.value),
-    };
-
-    /**
-     * @deprecated
-     */
-    const emitClose = () => {
-      console.warn(
-        'emitClose was deprecated.\nhttps://github.com/hoiheart/vue-universal-modal#usage-modal',
-      );
-      if (close.value) close.value();
-    };
-
-    const Log=(event:any)=>{
-      console.log(event);
-    }
-
     let sy = 0;
     const touchModalStart = (event: TouchEvent) => {
       sy = event.touches[0].clientY;
@@ -204,6 +168,43 @@ export default defineComponent({
         ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transitionDuration="300ms"
       //console.log(y)
     }
+
+    const onTransitionEmit = {
+      beforeEnter: () => context.emit('before-enter',modalRef.value),
+      enter: () => context.emit('enter',modalRef.value),
+      afterEnter: () => {
+        (modalRef.value as any).querySelector(".modal").ontouchstart =touchModalStart;
+        (modalRef.value as any).querySelector(".modal").ontouchmove=touchModalMove;
+        (modalRef.value as any).querySelector(".modal").ontouchend=touchModalEnd;
+        context.emit('after-enter',{targetRef:modalRef,close:props.close})
+      },
+      enterCancelled: () => context.emit('enter-cancelled',modalRef.value),
+      beforeLeave: () => context.emit('before-leave',modalRef.value),
+      leave: () => context.emit('leave',modalRef.value),
+      afterLeave: () => {
+        context.emit('after-leave',modalRef.value);
+        if (modelValue.value === false) {
+          inserted.value = false;
+        }
+      },
+      leaveCancelled: () => context.emit('leave-cancelled',modalRef.value),
+    };
+
+    /**
+     * @deprecated
+     */
+    const emitClose = () => {
+      console.warn(
+        'emitClose was deprecated.\nhttps://github.com/hoiheart/vue-universal-modal#usage-modal',
+      );
+      if (close.value) close.value();
+    };
+
+    const Log=(event:any)=>{
+      console.log(event);
+    }
+
+
 
     return {
       Log,
