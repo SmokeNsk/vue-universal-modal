@@ -142,9 +142,6 @@ export default defineComponent({
 
     let sy = 0;
     const touchModalStart = (event: TouchEvent) => {
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
       sy = event.touches[0].clientY;
       // (document.getElementsByClassName("modal")[0] as any).classList.remove("start-modal")
       (event.currentTarget as any).style.transitionDuration = "0ms";
@@ -184,18 +181,21 @@ export default defineComponent({
       beforeEnter: () => context.emit('before-enter', modalRef.value),
       enter: () => context.emit('enter', modalRef.value),
       afterEnter: () => {
-        (modalRef.value as any).querySelector(".modal").addEventListener("touchstart", touchModalStart, {passive: true});
-        (modalRef.value as any).querySelector(".modal").addEventListener("touchmove", touchModalMove, {passive: true});
-        (modalRef.value as any).querySelector(".modal").addEventListener("touchend", touchModalEnd, {passive: true});
+        if (props.swipe) {
+          (modalRef.value as any).querySelector(".modal").addEventListener("touchstart", touchModalStart, {passive: true});
+          (modalRef.value as any).querySelector(".modal").addEventListener("touchmove", touchModalMove, {passive: true});
+          (modalRef.value as any).querySelector(".modal").addEventListener("touchend", touchModalEnd, {passive: true});
+        }
         context.emit('after-enter', {targetRef: modalRef, close: props.close})
       },
       enterCancelled: () => context.emit('enter-cancelled', modalRef.value),
       beforeLeave: () => context.emit('before-leave', modalRef.value),
       leave: () => {
-        (modalRef.value as any).querySelector(".modal").removeEventListener("touchstart", touchModalStart, {passive: true});
-        (modalRef.value as any).querySelector(".modal").removeEventListener("touchmove", touchModalMove, {passive: true});
-        (modalRef.value as any).querySelector(".modal").removeEventListener("touchend", touchModalEnd, {passive: true});
-
+        if (props.swipe) {
+          (modalRef.value as any).querySelector(".modal").removeEventListener("touchstart", touchModalStart, {passive: true});
+          (modalRef.value as any).querySelector(".modal").removeEventListener("touchmove", touchModalMove, {passive: true});
+          (modalRef.value as any).querySelector(".modal").removeEventListener("touchend", touchModalEnd, {passive: true});
+        }
         context.emit('leave', modalRef.value);
       },
       afterLeave: () => {
