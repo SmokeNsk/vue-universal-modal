@@ -157,10 +157,7 @@ export default defineComponent({
 
     }
     const touchModalEnd = (event: TouchEvent) => {
-      ;
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
+
       const y = event.changedTouches[0].clientY - sy;
       if (y != 0) {
         //(document.getElementsByClassName("modal")[0] as any).classList.add("start-modal");
@@ -182,17 +179,17 @@ export default defineComponent({
       beforeEnter: () => context.emit('before-enter', modalRef.value),
       enter: () => context.emit('enter', modalRef.value),
       afterEnter: () => {
-        (modalRef.value as any).querySelector(".modal").addEventListener("touchstart", touchModalStart, {passive: false});
+        (modalRef.value as any).querySelector(".modal").addEventListener("touchstart", touchModalStart, {passive: true});
         (modalRef.value as any).querySelector(".modal").addEventListener("touchmove", touchModalMove, {passive: true});
-        (modalRef.value as any).querySelector(".modal").addEventListener("touchend", touchModalEnd, {passive: false});
+        (modalRef.value as any).querySelector(".modal").addEventListener("touchend", touchModalEnd, {passive: true});
         context.emit('after-enter', {targetRef: modalRef, close: props.close})
       },
       enterCancelled: () => context.emit('enter-cancelled', modalRef.value),
       beforeLeave: () => context.emit('before-leave', modalRef.value),
       leave: () => {
-        (modalRef.value as any).querySelector(".modal").removeEventListener("touchstart", touchModalStart, {passive: false});
+        (modalRef.value as any).querySelector(".modal").removeEventListener("touchstart", touchModalStart, {passive: true});
         (modalRef.value as any).querySelector(".modal").removeEventListener("touchmove", touchModalMove, {passive: true});
-        (modalRef.value as any).querySelector(".modal").removeEventListener("touchend", touchModalEnd, {passive: false});
+        (modalRef.value as any).querySelector(".modal").removeEventListener("touchend", touchModalEnd, {passive: true});
 
         context.emit('leave', modalRef.value);
       },
