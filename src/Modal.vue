@@ -158,17 +158,17 @@ export default defineComponent({
       const y = event.changedTouches[0].clientY - sy;
       if (y != 0) {
         //(document.getElementsByClassName("modal")[0] as any).classList.add("start-modal");
-        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transitionDuration="200ms";
+        (event.currentTarget as any).style.transitionDuration="200ms";
 
         nextTick(() => {
-              ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transform = `translate3d(0, 0%, 0)`
+          (event.currentTarget as any).style.transform = `translate3d(0, 0%, 0)`
               //setTimeout(() => (document.getElementsByClassName("modal")[0] as any).style.transitionDuration="300ms", 300);
               //   (document.getElementsByClassName("modal")[0] as any).style.animation = "ModalToStart 200ms ease-in normal forwards running"//.animation="ModalToStart 200ms ease-in";
             }
         );
 
       }else
-        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transitionDuration="300ms"
+        (event.currentTarget as any).style.transitionDuration="300ms"
       //console.log(y)
     }
 
@@ -177,13 +177,19 @@ export default defineComponent({
       enter: () => context.emit('enter',modalRef.value),
       afterEnter: () => {
         (modalRef.value as any).querySelector(".modal").addEventListener("touchstart",touchModalStart,{passive: true});
-        (modalRef.value as any).querySelector(".modal").addEventListener("touchmove",touchModalMove,{passive: true});;
-        (modalRef.value as any).querySelector(".modal").ontouchend=touchModalEnd;
+        (modalRef.value as any).querySelector(".modal").addEventListener("touchmove",touchModalMove,{passive: true});
+        (modalRef.value as any).querySelector(".modal").addEventListener("touchmove",touchModalEnd,{passive: true});
         context.emit('after-enter',{targetRef:modalRef,close:props.close})
       },
       enterCancelled: () => context.emit('enter-cancelled',modalRef.value),
       beforeLeave: () => context.emit('before-leave',modalRef.value),
-      leave: () => context.emit('leave',modalRef.value),
+      leave: () => {
+        (modalRef.value as any).querySelector(".modal").removeEventListener("touchstart",touchModalStart,{passive: true});
+        (modalRef.value as any).querySelector(".modal").removeEventListener("touchmove",touchModalMove,{passive: true});
+        (modalRef.value as any).querySelector(".modal").removeEventListener("touchmove",touchModalEnd,{passive: true});
+
+        context.emit('leave',modalRef.value);
+      },
       afterLeave: () => {
         context.emit('after-leave',modalRef.value);
         if (modelValue.value === false) {
