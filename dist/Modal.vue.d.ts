@@ -41,6 +41,9 @@ declare const _sfc_main: import("vue").DefineComponent<{
     modalRef: import("vue").Ref<null>;
     onMouseDownDimmed: (e: MouseEvent) => void;
     onMouseUpDimmed2: (event: MouseEvent) => void;
+    touchModalStart: (event: TouchEvent) => void;
+    touchModalMove: (event: TouchEvent) => void;
+    touchModalEnd: (event: TouchEvent) => void;
     onTransitionEmit: {
         beforeEnter: () => void;
         enter: () => void;

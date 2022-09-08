@@ -24,7 +24,9 @@
           }"
           @mousedown.self="onMouseDownDimmed"
           @mouseup="onMouseUpDimmed2"
-          @touchend.self="close()"
+          @touchstart.self="touchModalStart"
+          @touchmove.self="touchModalMove"
+          @touchend.self="touchModalEnd"
         >
           <slot :emitClose="emitClose" @click="close()"/>
           <slot name="close" />
@@ -35,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, toRefs, watch } from 'vue';
+import { defineComponent, inject, nextTick, ref, toRefs, watch } from 'vue';
 import { PLUGIN_NAME, CLASS_NAME } from './index';
 import { useA11Y, useClose, useOrder } from './hooks';
 
@@ -164,6 +166,41 @@ export default defineComponent({
     const Log=(event:any)=>{
       console.log(event);
     }
+
+    let sy = 0;
+    const touchModalStart = (event: TouchEvent) => {
+      sy = event.touches[0].clientY;
+      // (document.getElementsByClassName("modal")[0] as any).classList.remove("start-modal")
+      (document.getElementsByClassName("modal")[0] as any).style.transitionDuration="0ms";
+      // console.log(event)
+
+    }
+    let dy = 0;
+    const touchModalMove = (event: TouchEvent) => {
+      const y = Math.round(event.touches[0].clientY - sy);
+      if (y != dy && y > 0)
+        (document.getElementsByClassName("modal")[0] as any).style.transform = `translate3d(0, ${y}px, 0)`;
+      dy = y;
+
+    }
+    const touchModalEnd = (event: TouchEvent) => {
+      const y = event.changedTouches[0].clientY - sy;
+      if (y != 0) {
+        //(document.getElementsByClassName("modal")[0] as any).classList.add("start-modal");
+        (document.getElementsByClassName("modal")[0] as any).style.transitionDuration="200ms";
+
+        nextTick(() => {
+              (document.getElementsByClassName("modal")[0] as any).style.transform = `translate3d(0, 0%, 0)`
+              //setTimeout(() => (document.getElementsByClassName("modal")[0] as any).style.transitionDuration="300ms", 300);
+              //   (document.getElementsByClassName("modal")[0] as any).style.animation = "ModalToStart 200ms ease-in normal forwards running"//.animation="ModalToStart 200ms ease-in";
+            }
+        );
+
+      }else
+        (document.getElementsByClassName("modal")[0] as any).style.transitionDuration="300ms"
+      //console.log(y)
+    }
+
     return {
       Log,
       CLASS_NAME,
@@ -174,6 +211,7 @@ export default defineComponent({
       modalRef,
       onMouseDownDimmed,
       onMouseUpDimmed2,
+      touchModalStart, touchModalMove, touchModalEnd,
       onTransitionEmit,
       show,
       teleportTarget,
