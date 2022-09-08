@@ -139,7 +139,8 @@ export default defineComponent({
 
       sy = event.touches[0].clientY;
       // (document.getElementsByClassName("modal")[0] as any).classList.remove("start-modal")
-      ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transitionDuration="0ms";
+      (event.currentTarget as any).style.transitionDuration="0ms";
+      // ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transitionDuration="0ms";
       // console.log(event)
 
     }
@@ -147,7 +148,8 @@ export default defineComponent({
     const touchModalMove = (event: TouchEvent) => {
       const y = Math.round(event.touches[0].clientY - sy);
       if (y != dy && y > 0)
-        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transform = `translate3d(0, ${y}px, 0)`;
+        (event.currentTarget as any).style.transform = `translate3d(0, ${y}px, 0)`;
+        //((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transform = `translate3d(0, ${y}px, 0)`;
       dy = y;
 
     }
