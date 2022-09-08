@@ -281,4 +281,48 @@ export default defineComponent({
   width: 100%;
   min-height: 100%;
 }
+
+.modal {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  box-sizing: border-box;
+  font-size: 20px;
+  text-align: center;
+  background: var(--ion-item-background, var(--ion-background-color, #fff));
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  overflow: hidden;
+}
+
+/*.vue-universal-modal-enter-from,*/
+/*.vue-universal-modal-enter-to,*/
+/*.vue-universal-modal-leave-from,*/
+/*.vue-universal-modal-leave-to*/
+/*.modal {*/
+/*  transition: 0.3s transform;*/
+/*}*/
+/*open*/
+.start-modal,
+.vue-universal-modal-enter-to .modal,
+.vue-universal-modal-leave-from .modal {
+  transition-timing-function: cubic-bezier(.11, .93, .28, 1);
+  transition-property: transform;
+  transition-duration: 300ms;
+
+  transform: translate3d(0, 0%, 0);
+
+}
+
+/*close*/
+.vue-universal-modal-enter-from .modal,
+.vue-universal-modal-leave-to .modal {
+  transition-timing-function: cubic-bezier(.74, 0, .23, 1);
+  transition-property: transform;
+  transition-duration: 300ms;
+  transform: translate3d(0, 100%, 0) !important;
+}
+
 </style>
