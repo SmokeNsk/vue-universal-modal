@@ -26,7 +26,7 @@
           @mouseup.self="onMouseUpDimmed2"
           @touchend.self="close()"
         >
-          <slot :emitClose="emitClose" :class="{modal:true,'modal-sheet':true}"/>
+          <slot :emitClose="emitClose"/>
           <slot name="close" />
         </div>
       </div>
@@ -136,6 +136,7 @@ export default defineComponent({
 
     let sy = 0;
     const touchModalStart = (event: TouchEvent) => {
+
       sy = event.touches[0].clientY;
       // (document.getElementsByClassName("modal")[0] as any).classList.remove("start-modal")
       ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transitionDuration="0ms";
@@ -173,8 +174,8 @@ export default defineComponent({
       beforeEnter: () => context.emit('before-enter',modalRef.value),
       enter: () => context.emit('enter',modalRef.value),
       afterEnter: () => {
-        (modalRef.value as any).querySelector(".modal").ontouchstart =touchModalStart;
-        (modalRef.value as any).querySelector(".modal").ontouchmove=touchModalMove;
+        (modalRef.value as any).querySelector(".modal").addEventListener("touchstart",touchModalStart,{passive: true});
+        (modalRef.value as any).querySelector(".modal").addEventListener("touchmove",touchModalMove,{passive: true});;
         (modalRef.value as any).querySelector(".modal").ontouchend=touchModalEnd;
         context.emit('after-enter',{targetRef:modalRef,close:props.close})
       },

@@ -72,7 +72,7 @@ const k = ({ modalRef: e2, show: l2 }) => {
   }, { immediate: true });
   return { latest: u2 };
 };
-var N = (() => ".vue-universal-modal-leave-from[data-v-65b97ef8],.vue-universal-modal-enter-to[data-v-65b97ef8]{opacity:1}.vue-universal-modal-enter-from[data-v-65b97ef8],.vue-universal-modal-leave-to[data-v-65b97ef8]{opacity:0}.vue-universal-modal[data-v-65b97ef8]{-webkit-overflow-scrolling:touch;overscroll-behavior:contain;position:fixed;overflow-y:auto;left:0;top:0;right:0;bottom:0;background-color:#000c;text-align:left}.vue-universal-modal[data-v-65b97ef8]:not(.vue-universal-modal-latest){z-index:1000}.vue-universal-modal-content[data-v-65b97ef8]{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:100%}\n")();
+var N = (() => ".vue-universal-modal-leave-from[data-v-c4f49b7e],.vue-universal-modal-enter-to[data-v-c4f49b7e]{opacity:1}.vue-universal-modal-enter-from[data-v-c4f49b7e],.vue-universal-modal-leave-to[data-v-c4f49b7e]{opacity:0}.vue-universal-modal[data-v-c4f49b7e]{-webkit-overflow-scrolling:touch;overscroll-behavior:contain;position:fixed;overflow-y:auto;left:0;top:0;right:0;bottom:0;background-color:#000c;text-align:left}.vue-universal-modal[data-v-c4f49b7e]:not(.vue-universal-modal-latest){z-index:1000}.vue-universal-modal-content[data-v-c4f49b7e]{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:100%}\n")();
 var _ = (e2, t2) => {
   const o2 = e2.__vccOpts || e2;
   for (const [e3, l2] of t2)
@@ -125,8 +125,8 @@ const B = s({ inheritAttrs: false, props: { fullscreen: { type: Boolean, default
       m2.value.getElementsByClassName("modal")[0].style.transitionDuration = "300ms";
   };
   const S2 = { beforeEnter: () => l2.emit("before-enter", m2.value), enter: () => l2.emit("enter", m2.value), afterEnter: () => {
-    m2.value.querySelector(".modal").ontouchstart = C2;
-    m2.value.querySelector(".modal").ontouchmove = w2;
+    m2.value.querySelector(".modal").addEventListener("touchstart", C2, { passive: true });
+    m2.value.querySelector(".modal").addEventListener("touchmove", w2, { passive: true });
     m2.value.querySelector(".modal").ontouchend = E2;
     l2.emit("after-enter", { targetRef: m2, close: e2.close });
   }, enterCancelled: () => l2.emit("enter-cancelled", m2.value), beforeLeave: () => l2.emit("before-leave", m2.value), leave: () => l2.emit("leave", m2.value), afterLeave: () => {
@@ -145,10 +145,10 @@ const B = s({ inheritAttrs: false, props: { fullscreen: { type: Boolean, default
 function T(e2, t2, o2, l2, a2, n2) {
   return e2.inserted ? (u(), d(c, { key: 0, to: e2.teleportTarget, disabled: e2.disabled }, [v(m, f({ appear: "", name: e2.CLASS_NAME }, p(e2.onTransitionEmit)), { default: y(() => {
     var _a;
-    return [M(b("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [b("div", { class: h(`${e2.CLASS_NAME}-content`), style: g({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[0] || (t2[0] = C((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[1] || (t2[1] = C((...t3) => e2.onMouseUpDimmed2 && e2.onMouseUpDimmed2(...t3), ["self"])), onTouchend: t2[2] || (t2[2] = C((t3) => e2.close(), ["self"])) }, [D(e2.$slots, "default", { emitClose: e2.emitClose, class: h({ modal: true, "modal-sheet": true }) }, void 0, true), D(e2.$slots, "close", {}, void 0, true)], 38)], 16), [[w, e2.show]])];
+    return [M(b("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [b("div", { class: h(`${e2.CLASS_NAME}-content`), style: g({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[0] || (t2[0] = C((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[1] || (t2[1] = C((...t3) => e2.onMouseUpDimmed2 && e2.onMouseUpDimmed2(...t3), ["self"])), onTouchend: t2[2] || (t2[2] = C((t3) => e2.close(), ["self"])) }, [D(e2.$slots, "default", { emitClose: e2.emitClose }, void 0, true), D(e2.$slots, "close", {}, void 0, true)], 38)], 16), [[w, e2.show]])];
   }), _: 3 }, 16, ["name"])], 8, ["to", "disabled"])) : E("", true);
 }
-var $ = _(B, [["render", T], ["__scopeId", "data-v-65b97ef8"]]);
+var $ = _(B, [["render", T], ["__scopeId", "data-v-c4f49b7e"]]);
 const x = "VueUniversalModal";
 const R = "vue-universal-modal";
 const V = (e2, t2 = {}) => {
