@@ -23,7 +23,7 @@
             ...mergeOptions?.styleModalContent,
           }"
           @mousedown.self="onMouseDownDimmed"
-          @mouseup="onMouseUpDimmed2"
+          @mouseup.self="onMouseUpDimmed2"
           @touchend.self="close()"
         >
           <slot :emitClose="emitClose"
