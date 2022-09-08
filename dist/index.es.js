@@ -72,8 +72,8 @@ const k = ({ modalRef: e2, show: l2 }) => {
   }, { immediate: true });
   return { latest: r2 };
 };
-var N = (() => ".vue-universal-modal-leave-from,.vue-universal-modal-enter-to{opacity:1}.vue-universal-modal-enter-from,.vue-universal-modal-leave-to{opacity:0}.vue-universal-modal{-webkit-overflow-scrolling:touch;overscroll-behavior:contain;position:fixed;overflow-y:auto;left:0;top:0;right:0;bottom:0;background-color:#000c;text-align:left}.vue-universal-modal:not(.vue-universal-modal-latest){z-index:1000}.vue-universal-modal-content{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:100%}\n")();
-var T = (e2, t2) => {
+var T = (() => ".vue-universal-modal-leave-from,.vue-universal-modal-enter-to{opacity:1}.vue-universal-modal-enter-from,.vue-universal-modal-leave-to{opacity:0}.vue-universal-modal{-webkit-overflow-scrolling:touch;overscroll-behavior:contain;position:fixed;overflow-y:auto;left:0;top:0;right:0;bottom:0;background-color:#000c;text-align:left}.vue-universal-modal:not(.vue-universal-modal-latest){z-index:1000}.vue-universal-modal-content{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:100%}\n")();
+var N = (e2, t2) => {
   const o2 = e2.__vccOpts || e2;
   for (const [e3, l2] of t2)
     o2[e3] = l2;
@@ -118,13 +118,13 @@ const B = s({ inheritAttrs: false, props: { fullscreen: { type: Boolean, default
     document.getElementsByClassName("modal")[0].style.transitionDuration = "0ms";
   };
   let S2 = 0;
-  const N2 = (e3) => {
+  const T2 = (e3) => {
     const t2 = Math.round(e3.touches[0].clientY - w2);
     if (t2 != S2 && t2 > 0)
       document.getElementsByClassName("modal")[0].style.transform = `translate3d(0, ${t2}px, 0)`;
     S2 = t2;
   };
-  const T2 = (e3) => {
+  const N2 = (e3) => {
     const t2 = e3.changedTouches[0].clientY - w2;
     if (t2 != 0) {
       document.getElementsByClassName("modal")[0].style.transitionDuration = "200ms";
@@ -134,15 +134,15 @@ const B = s({ inheritAttrs: false, props: { fullscreen: { type: Boolean, default
     } else
       document.getElementsByClassName("modal")[0].style.transitionDuration = "300ms";
   };
-  return { Log: D2, CLASS_NAME: R, emitClose: b2, inserted: m2, latest: p2, mergeOptions: M2, modalRef: v2, onMouseDownDimmed: h2, onMouseUpDimmed2: g2, touchModalStart: E2, touchModalMove: N2, touchModalEnd: T2, onTransitionEmit: C2, show: f2, teleportTarget: n2, transition: M2.transition ? M2.transition / 1e3 + "s" : void 0 };
+  return { Log: D2, CLASS_NAME: R, emitClose: b2, inserted: m2, latest: p2, mergeOptions: M2, modalRef: v2, onMouseDownDimmed: h2, onMouseUpDimmed2: g2, touchModalStart: E2, touchModalMove: T2, touchModalEnd: N2, onTransitionEmit: C2, show: f2, teleportTarget: n2, transition: M2.transition ? M2.transition / 1e3 + "s" : void 0 };
 } });
 function $(e2, t2, o2, l2, a2, n2) {
   return e2.inserted ? (r(), d(c, { key: 0, to: e2.teleportTarget, disabled: e2.disabled }, [m(v, f({ appear: "", name: e2.CLASS_NAME }, M(e2.onTransitionEmit)), { default: p(() => {
     var _a;
-    return [h(y("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [y("div", { class: g(`${e2.CLASS_NAME}-content`), style: C({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[3] || (t2[3] = b((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[4] || (t2[4] = (...t3) => e2.onMouseUpDimmed2 && e2.onMouseUpDimmed2(...t3)) }, [D(e2.$slots, "default", { emitClose: e2.emitClose, onTouchstart: t2[0] || (t2[0] = (...t3) => e2.touchModalStart && e2.touchModalStart(...t3)), onTouchmove: t2[1] || (t2[1] = (...t3) => e2.touchModalMove && e2.touchModalMove(...t3)), onTouchend: t2[2] || (t2[2] = (...t3) => e2.touchModalEnd && e2.touchModalEnd(...t3)) }), D(e2.$slots, "close")], 38)], 16), [[w, e2.show]])];
+    return [h(y("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [y("div", { class: g(`${e2.CLASS_NAME}-content`), style: C({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[3] || (t2[3] = b((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[4] || (t2[4] = (...t3) => e2.onMouseUpDimmed2 && e2.onMouseUpDimmed2(...t3)), onTouchend: t2[5] || (t2[5] = b((t3) => e2.close(), ["self"])) }, [D(e2.$slots, "default", { emitClose: e2.emitClose, onTouchstart: t2[0] || (t2[0] = (...t3) => e2.touchModalStart && e2.touchModalStart(...t3)), onTouchmove: t2[1] || (t2[1] = (...t3) => e2.touchModalMove && e2.touchModalMove(...t3)), onTouchend: t2[2] || (t2[2] = (...t3) => e2.touchModalEnd && e2.touchModalEnd(...t3)) }), D(e2.$slots, "close")], 38)], 16), [[w, e2.show]])];
   }), _: 3 }, 16, ["name"])], 8, ["to", "disabled"])) : E("", true);
 }
-var _ = T(B, [["render", $]]);
+var _ = N(B, [["render", $]]);
 const x = "VueUniversalModal";
 const R = "vue-universal-modal";
 const V = (e2, t2 = {}) => {

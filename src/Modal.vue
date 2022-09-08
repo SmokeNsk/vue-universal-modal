@@ -24,7 +24,7 @@
           }"
           @mousedown.self="onMouseDownDimmed"
           @mouseup="onMouseUpDimmed2"
-
+          @touchend.self="close()"
         >
           <slot :emitClose="emitClose"
                 @touchstart="touchModalStart"
