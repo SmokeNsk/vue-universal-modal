@@ -135,7 +135,9 @@ export default defineComponent({
 
     let sy = 0;
     const touchModalStart = (event: TouchEvent) => {
-
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
       sy = event.touches[0].clientY;
       // (document.getElementsByClassName("modal")[0] as any).classList.remove("start-modal")
       (event.currentTarget as any).style.transitionDuration="0ms";
