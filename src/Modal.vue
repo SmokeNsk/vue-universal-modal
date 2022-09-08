@@ -145,6 +145,7 @@ export default defineComponent({
     }
     let dy = 0;
     const touchModalMove = (event: TouchEvent) => {
+      event.preventDefault();
       const y = Math.round(event.touches[0].clientY - sy);
       if (y != dy && y > 0)
         (event.currentTarget as any).style.transform = `translate3d(0, ${y}px, 0)`;
