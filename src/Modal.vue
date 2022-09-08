@@ -24,7 +24,7 @@
           }"
           @mousedown.self="onMouseDownDimmed"
           @mouseup="onMouseUpDimmed2"
-          @touchend.self="onMouseUpDimmed2"
+          @touchend.self="close()"
         >
           <slot :emitClose="emitClose"/>
           <slot name="close" />
@@ -133,6 +133,7 @@ export default defineComponent({
       console.error(event);
       if (close.value) close.value();
     };
+
 
     const onTransitionEmit = {
       beforeEnter: () => context.emit('before-enter',modalRef.value),
