@@ -139,9 +139,9 @@ export default defineComponent({
       beforeEnter: () => context.emit('before-enter',modalRef.value),
       enter: () => context.emit('enter',modalRef.value),
       afterEnter: () => {
-        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).addEventListener("touchstart",touchModalStart)
-        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).addEventListener("touchmove",touchModalMove)
-        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).addEventListener("touchend",touchModalEnd)
+        ((modalRef.value as any).querySelector(".modal")).addEventListener("touchstart",touchModalStart)
+        ((modalRef.value as any).querySelector(".modal")).addEventListener("touchmove",touchModalMove)
+        ((modalRef.value as any).querySelector(".modal")).addEventListener("touchend",touchModalEnd)
         context.emit('after-enter',{targetRef:modalRef,close:props.close})
       },
       enterCancelled: () => context.emit('enter-cancelled',modalRef.value),
