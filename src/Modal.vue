@@ -26,10 +26,7 @@
           @mouseup.self="onMouseUpDimmed2"
           @touchend.self="close()"
         >
-          <slot :emitClose="emitClose"
-                @touchstart="touchModalStart"
-                @touchmove="touchModalMove"
-                @touchend="touchModalEnd"/>
+          <slot :emitClose="emitClose"/>
           <slot name="close" />
         </div>
       </div>
@@ -141,7 +138,12 @@ export default defineComponent({
     const onTransitionEmit = {
       beforeEnter: () => context.emit('before-enter',modalRef.value),
       enter: () => context.emit('enter',modalRef.value),
-      afterEnter: () => context.emit('after-enter',{targetRef:modalRef,close:props.close}),
+      afterEnter: () => {
+        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).addEventListener("touchstart",touchModalStart)
+        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).addEventListener("touchmove",touchModalMove)
+        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).addEventListener("touchend",touchModalEnd)
+        context.emit('after-enter',{targetRef:modalRef,close:props.close})
+      },
       enterCancelled: () => context.emit('enter-cancelled',modalRef.value),
       beforeLeave: () => context.emit('before-leave',modalRef.value),
       leave: () => context.emit('leave',modalRef.value),
