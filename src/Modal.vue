@@ -66,7 +66,10 @@ export default defineComponent({
       type: Boolean,
       default: true
     },
-
+    swipeToClose: {
+      type: Number,
+      default: 0
+    },
     close: {
       type: Function,
       default: () => undefined,
@@ -164,6 +167,12 @@ export default defineComponent({
       if (y != 0) {
         //(document.getElementsByClassName("modal")[0] as any).classList.add("start-modal");
         (event.currentTarget as any).style.transitionDuration = "200ms";
+        if (props.swipeToClose &&
+            (props.swipeToClose <= (Math.abs(y) / (event.currentTarget as any).getBoundingClientRect().height))
+        ) {
+          if (close.value) close.value();
+          return;
+        }
 
         nextTick(() => {
               (event.currentTarget as any).style.transform = `translate3d(0, 0%, 0)`

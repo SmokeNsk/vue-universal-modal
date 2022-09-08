@@ -19,6 +19,10 @@ declare const _sfc_main: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    swipeToClose: {
+        type: NumberConstructor;
+        default: number;
+    };
     close: {
         type: FunctionConstructor;
         default: () => undefined;
@@ -74,6 +78,10 @@ declare const _sfc_main: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    swipeToClose: {
+        type: NumberConstructor;
+        default: number;
+    };
     close: {
         type: FunctionConstructor;
         default: () => undefined;
@@ -104,6 +112,7 @@ declare const _sfc_main: import("vue").DefineComponent<{
     initialBreakpoint: number;
     breakpoints: unknown[];
     swipe: boolean;
+    swipeToClose: number;
     disabled: boolean;
     modelValue: boolean;
     options: Record<string, any>;
