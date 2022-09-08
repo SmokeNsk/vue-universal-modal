@@ -26,7 +26,7 @@
           @mouseup.self="onMouseUpDimmed2"
           @touchend.self="close()"
         >
-          <slot :emitClose="emitClose"/>
+          <slot :emitClose="emitClose" :class="{modal:true,'modal-sheet':true}"/>
           <slot name="close" />
         </div>
       </div>
