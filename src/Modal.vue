@@ -172,7 +172,7 @@ export default defineComponent({
     const touchModalStart = (event: TouchEvent) => {
       sy = event.touches[0].clientY;
       // (document.getElementsByClassName("modal")[0] as any).classList.remove("start-modal")
-      (document.getElementsByClassName("modal")[0] as any).style.transitionDuration="0ms";
+      ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transitionDuration="0ms";
       // console.log(event)
 
     }
@@ -180,7 +180,7 @@ export default defineComponent({
     const touchModalMove = (event: TouchEvent) => {
       const y = Math.round(event.touches[0].clientY - sy);
       if (y != dy && y > 0)
-        (document.getElementsByClassName("modal")[0] as any).style.transform = `translate3d(0, ${y}px, 0)`;
+        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transform = `translate3d(0, ${y}px, 0)`;
       dy = y;
 
     }
@@ -188,17 +188,17 @@ export default defineComponent({
       const y = event.changedTouches[0].clientY - sy;
       if (y != 0) {
         //(document.getElementsByClassName("modal")[0] as any).classList.add("start-modal");
-        (document.getElementsByClassName("modal")[0] as any).style.transitionDuration="200ms";
+        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transitionDuration="200ms";
 
         nextTick(() => {
-              (document.getElementsByClassName("modal")[0] as any).style.transform = `translate3d(0, 0%, 0)`
+              ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transform = `translate3d(0, 0%, 0)`
               //setTimeout(() => (document.getElementsByClassName("modal")[0] as any).style.transitionDuration="300ms", 300);
               //   (document.getElementsByClassName("modal")[0] as any).style.animation = "ModalToStart 200ms ease-in normal forwards running"//.animation="ModalToStart 200ms ease-in";
             }
         );
 
       }else
-        (document.getElementsByClassName("modal")[0] as any).style.transitionDuration="300ms"
+        ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transitionDuration="300ms"
       //console.log(y)
     }
 
@@ -224,7 +224,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .vue-universal-modal-leave-from,
 .vue-universal-modal-enter-to {
   opacity: 1;
