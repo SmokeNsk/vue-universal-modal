@@ -24,6 +24,7 @@
           }"
           @mousedown.self="onMouseDownDimmed"
           @mouseup="onMouseUpDimmed2"
+          @touchend.self="onMouseUpDimmed2"
         >
           <slot :emitClose="emitClose"/>
           <slot name="close" />
