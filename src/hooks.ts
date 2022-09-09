@@ -63,11 +63,11 @@ export const useA11Y: UseA11Y = ({ modalRef, latest, show }) => {
   function setFocus(value: boolean) {
     if (value) {
       if (modalRef.value) {
-        (modalRef.value as unknown as HTMLElement).focus();
+        //(modalRef.value as unknown as HTMLElement).focus();
       }
     } else {
       if (activeElement) {
-        (activeElement as HTMLElement).focus();
+        //(activeElement as HTMLElement).focus();
       }
     }
   }
