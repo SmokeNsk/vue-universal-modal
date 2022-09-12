@@ -179,7 +179,7 @@ export default defineComponent({
         if (props.swipeToClose &&
             (props.swipeToClose <= closePercent)
         ) {
-          (event.currentTarget as any).style.transitionDuration = `50ms`;
+          (event.currentTarget as any).style.transitionDuration = `130ms`;
           if (close.value) close.value();
           return;
         }else{
