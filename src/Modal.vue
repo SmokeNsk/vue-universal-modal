@@ -143,35 +143,47 @@ export default defineComponent({
       if (close.value) close.value();
     };
 
-    let sy = 0;
+    const stouch = {sy:0,ts:0};
     const touchModalStart = (event: TouchEvent) => {
-      sy = event.touches[0].clientY;
+      stouch.sy = event.touches[0].clientY;
+      stouch.ts=Date.now();
       // (document.getElementsByClassName("modal")[0] as any).classList.remove("start-modal")
       (event.currentTarget as any).style.transitionDuration = "0ms";
       // ((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transitionDuration="0ms";
       // console.log(event)
 
     }
-    let dy = 0;
+    let dy=0;
     const touchModalMove = (event: TouchEvent) => {
-      const y = Math.round(event.touches[0].clientY - sy);
-      if (y != dy && y > 0)
+      const y = Math.round(event.touches[0].clientY - stouch.sy)
+      if (y != dy && y > 0) {
         (event.currentTarget as any).style.transform = `translate3d(0, ${y}px, 0)`;
+      }
       //((modalRef.value as any).getElementsByClassName("modal")[0] as any).style.transform = `translate3d(0, ${y}px, 0)`;
-      dy = y;
+      dy=y;
+      stouch.ts=Date.now();
 
     }
     const touchModalEnd = (event: TouchEvent) => {
 
-      const y = event.changedTouches[0].clientY - sy;
+      const y = event.changedTouches[0].clientY - stouch.sy;
+
       if (y != 0) {
         //(document.getElementsByClassName("modal")[0] as any).classList.add("start-modal");
-        (event.currentTarget as any).style.transitionDuration = "200ms";
+        const ts=Date.now()-stouch.ts;
+        const h=(event.currentTarget as any).getBoundingClientRect().height;
+        const closeVPercent=Math.abs(y-dy) / h;
+        const closePercent=Math.abs(y) / h;
+
+
         if (props.swipeToClose &&
-            (props.swipeToClose <= (Math.abs(y) / (event.currentTarget as any).getBoundingClientRect().height))
+            (props.swipeToClose <= closePercent)
         ) {
+          (event.currentTarget as any).style.transitionDuration = `${Math.round(ts*(1-closePercent)/closeVPercent)}ms`;
           if (close.value) close.value();
           return;
+        }else{
+          (event.currentTarget as any).style.transitionDuration = "200ms";
         }
 
         nextTick(() => {
