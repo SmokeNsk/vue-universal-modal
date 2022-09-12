@@ -322,6 +322,7 @@ export default defineComponent({
   border-bottom-left-radius: 0px;
   overflow: hidden;
   height: var(--maxHeight, unset);
+  will-change: transform, opacity;
 }
 
 /*.vue-universal-modal-enter-from,*/
