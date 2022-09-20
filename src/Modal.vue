@@ -275,7 +275,7 @@ export default defineComponent({
 
 .vue-universal-modal-enter-from,
 .vue-universal-modal-leave-to {
-  opacity: 0;
+  opacity: 0.3;
 }
 
 .vue-universal-modal {
