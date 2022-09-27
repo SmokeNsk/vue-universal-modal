@@ -176,11 +176,11 @@ export default defineComponent({
         const closePercent=Math.abs(y) / h;
 
 
-        if (props.swipeToClose &&
+        if (y>0 && props.swipeToClose &&
             (props.swipeToClose <= closePercent)
         ) {
           (event.currentTarget as any).style.transitionDuration = `130ms`;
-          if (close.value) close.value();
+          if ( close.value) close.value();
           return;
         }else{
           (event.currentTarget as any).style.transitionDuration = "200ms";
