@@ -26,7 +26,7 @@
             @mouseup.self="onMouseUpDimmed2"
             @touchmove.self="close()"
         >
-          <slot name="modal-head"></slot>
+          <slot name="modal-head"/>
           <div class="modal modal-sheet "
                :style="{'--maxHeight': initialBreakpoint?`${Math.round(initialBreakpoint*100)}%`:'unset' }">
             <slot :emitClose="emitClose"/>
