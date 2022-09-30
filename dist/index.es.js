@@ -1,4 +1,4 @@
-import { onMounted as e, watch as t, nextTick as o, onUnmounted as a, inject as n, computed as l, defineComponent as s, toRefs as i, ref as r, openBlock as u, createBlock as d, Teleport as v, createVNode as c, Transition as m, mergeProps as f, toHandlers as p, withCtx as y, withDirectives as h, createElementVNode as g, normalizeClass as b, normalizeStyle as M, withModifiers as w, renderSlot as C, vShow as D, createCommentVNode as x, readonly as E } from "vue";
+import { onMounted as e, watch as t, nextTick as o, onUnmounted as a, inject as n, computed as l, defineComponent as s, toRefs as i, ref as r, openBlock as u, createBlock as d, Teleport as c, createVNode as v, Transition as m, mergeProps as f, toHandlers as p, withCtx as h, withDirectives as y, createElementVNode as g, normalizeClass as b, normalizeStyle as M, withModifiers as w, renderSlot as C, vShow as D, createCommentVNode as x, readonly as E } from "vue";
 const L = ({ modalRef: n2, latest: l2, show: s2 }) => {
   function i2(e2) {
     const t2 = e2.target.closest(`.${B}`);
@@ -70,30 +70,30 @@ const k = ({ modalRef: e2, show: a2 }) => {
   }, { immediate: true });
   return { latest: u2 };
 };
-var T = (() => ".vue-universal-modal-leave-from[data-v-7286302d],.vue-universal-modal-enter-to[data-v-7286302d]{opacity:1}.vue-universal-modal-enter-from[data-v-7286302d],.vue-universal-modal-leave-to[data-v-7286302d]{opacity:0}.vue-universal-modal[data-v-7286302d]{-webkit-overflow-scrolling:touch;overscroll-behavior:contain;position:fixed;overflow-y:auto;left:0;top:0;right:0;bottom:0;background-color:#000c;text-align:left}.vue-universal-modal[data-v-7286302d]:not(.vue-universal-modal-latest){z-index:1000}.vue-universal-modal-content[data-v-7286302d]{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:100%}.modal[data-v-7286302d]{position:fixed;width:100%;bottom:0;box-sizing:border-box;font-size:20px;text-align:center;background:var(--ion-item-background, var(--ion-background-color, #fff));border-radius:10px 10px 0 0/10px 10px 0px 0px;overflow:hidden;height:var(--maxHeight, unset);will-change:transform,opacity}.start-modal[data-v-7286302d],.vue-universal-modal-enter-to .modal[data-v-7286302d],.vue-universal-modal-leave-from .modal[data-v-7286302d]{transition-timing-function:cubic-bezier(.11,.93,.28,1);transition-property:transform;transition-duration:.3s;transform:translateZ(0)}.vue-universal-modal-enter-from .modal[data-v-7286302d],.vue-universal-modal-leave-to .modal[data-v-7286302d]{transition-timing-function:cubic-bezier(.74,0,.23,1);transition-property:transform;transition-duration:.3s;transform:translate3d(0,100%,0)!important}\n")();
+var T = (() => ".vue-universal-modal-leave-from[data-v-39e2c762],.vue-universal-modal-enter-to[data-v-39e2c762]{opacity:1}.vue-universal-modal-enter-from[data-v-39e2c762],.vue-universal-modal-leave-to[data-v-39e2c762]{opacity:0}.vue-universal-modal[data-v-39e2c762]{-webkit-overflow-scrolling:touch;overscroll-behavior:contain;position:fixed;overflow-y:auto;left:0;top:0;right:0;bottom:0;background-color:#000c;text-align:left}.vue-universal-modal[data-v-39e2c762]:not(.vue-universal-modal-latest){z-index:1000}.vue-universal-modal-content[data-v-39e2c762]{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:100%}.modal[data-v-39e2c762]{position:fixed;width:100%;bottom:0;box-sizing:border-box;font-size:20px;text-align:center;background:var(--ion-item-background, var(--ion-background-color, #fff));border-radius:10px 10px 0 0/10px 10px 0px 0px;overflow:hidden;height:var(--maxHeight, unset);will-change:transform,opacity}.start-modal[data-v-39e2c762],.vue-universal-modal-enter-to .modal[data-v-39e2c762],.vue-universal-modal-leave-from .modal[data-v-39e2c762]{transition-timing-function:cubic-bezier(.11,.93,.28,1);transition-property:transform;transition-duration:.3s;transform:translateZ(0)}.vue-universal-modal-enter-from .modal[data-v-39e2c762],.vue-universal-modal-leave-to .modal[data-v-39e2c762]{transition-timing-function:cubic-bezier(.74,0,.23,1);transition-property:transform;transition-duration:.3s;transform:translate3d(0,100%,0)!important}\n")();
 var A = (e2, t2) => {
   const o2 = e2.__vccOpts || e2;
   for (const [e3, a2] of t2)
     o2[e3] = a2;
   return o2;
 };
-const _ = s({ inheritAttrs: false, props: { initialBreakpoint: { type: Number, default: void 0 }, breakpoints: { type: Array, default: [] }, swipe: { type: Boolean, default: true }, swipeToClose: { type: Number, default: 0 }, close: { type: Function, default: () => {
+const $ = s({ inheritAttrs: false, props: { initialBreakpoint: { type: Number, default: void 0 }, breakpoints: { type: Array, default: [] }, swipe: { type: Boolean, default: true }, swipeToClose: { type: Number, default: 0 }, close: { type: Function, default: () => {
 } }, disabled: { type: Boolean, default: false }, modelValue: { type: Boolean, default: true }, options: { type: Object, default: () => ({}) } }, emits: ["before-enter", "enter", "after-enter", "enter-cancelled", "before-leave", "leave", "after-leave", "leave-cancelled"], setup(e2, a2) {
   const { teleportTarget: l2 } = n(R);
-  const { close: s2, disabled: u2, options: d2, modelValue: v2 } = i(e2);
-  const c2 = r(v2.value === void 0 ? true : v2.value);
+  const { close: s2, disabled: u2, options: d2, modelValue: c2 } = i(e2);
+  const v2 = r(c2.value === void 0 ? true : c2.value);
   const m2 = r(null);
   const f2 = r(!u2.value);
   const p2 = { transition: 300, closeClickDimmed: true, closeKeyCode: 27, styleModalContent: {}, ...d2.value };
-  t([() => v2.value, () => u2.value], () => {
-    const e3 = v2.value && !u2.value;
+  t([() => c2.value, () => u2.value], () => {
+    const e3 = c2.value && !u2.value;
     f2.value = e3;
-    if (v2.value)
-      c2.value = v2.value;
+    if (c2.value)
+      v2.value = c2.value;
   }, { immediate: true });
-  const { latest: y2 } = k({ modalRef: m2, show: f2 });
-  L({ latest: y2, modalRef: m2, show: f2 });
-  const { onMouseDownDimmed: h2, onMouseUpDimmed: g2 } = S({ close: s2, closeClickDimmed: p2.closeClickDimmed, closeKeyCode: p2.closeKeyCode, latest: y2 });
+  const { latest: h2 } = k({ modalRef: m2, show: f2 });
+  L({ latest: h2, modalRef: m2, show: f2 });
+  const { onMouseDownDimmed: y2, onMouseUpDimmed: g2 } = S({ close: s2, closeClickDimmed: p2.closeClickDimmed, closeKeyCode: p2.closeKeyCode, latest: h2 });
   const b2 = (e3) => {
     g2(e3);
     if (s2.value)
@@ -147,8 +147,8 @@ const _ = s({ inheritAttrs: false, props: { initialBreakpoint: { type: Number, d
     a2.emit("leave", m2.value);
   }, afterLeave: () => {
     a2.emit("after-leave", m2.value);
-    if (v2.value === false)
-      c2.value = false;
+    if (c2.value === false)
+      v2.value = false;
   }, leaveCancelled: () => a2.emit("leave-cancelled", m2.value) };
   const T2 = () => {
     if (s2.value)
@@ -156,15 +156,15 @@ const _ = s({ inheritAttrs: false, props: { initialBreakpoint: { type: Number, d
   };
   const A2 = (e3) => {
   };
-  return { Log: A2, CLASS_NAME: B, emitClose: T2, inserted: c2, latest: y2, mergeOptions: p2, modalRef: m2, onMouseDownDimmed: h2, onMouseUpDimmed2: b2, touchModalStart: w2, touchModalMove: D2, touchModalEnd: x2, onTransitionEmit: E2, show: f2, teleportTarget: l2, transition: p2.transition ? p2.transition / 1e3 + "s" : void 0 };
+  return { Log: A2, CLASS_NAME: B, emitClose: T2, inserted: v2, latest: h2, mergeOptions: p2, modalRef: m2, onMouseDownDimmed: y2, onMouseUpDimmed2: b2, touchModalStart: w2, touchModalMove: D2, touchModalEnd: x2, onTransitionEmit: E2, show: f2, teleportTarget: l2, transition: p2.transition ? p2.transition / 1e3 + "s" : void 0 };
 } });
-function $(e2, t2, o2, a2, n2, l2) {
-  return e2.inserted ? (u(), d(v, { key: 0, to: e2.teleportTarget, disabled: e2.disabled }, [c(m, f({ appear: "", name: e2.CLASS_NAME }, p(e2.onTransitionEmit)), { default: y(() => {
+function _(e2, t2, o2, a2, n2, l2) {
+  return e2.inserted ? (u(), d(c, { key: 0, to: e2.teleportTarget, disabled: e2.disabled }, [v(m, f({ appear: "", name: e2.CLASS_NAME }, p(e2.onTransitionEmit)), { default: h(() => {
     var _a;
-    return [h(g("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [g("div", { class: b(`${e2.CLASS_NAME}-content`), style: M({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[0] || (t2[0] = w((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[1] || (t2[1] = w((...t3) => e2.onMouseUpDimmed2 && e2.onMouseUpDimmed2(...t3), ["self"])), onTouchmove: t2[2] || (t2[2] = w((t3) => e2.close(), ["self"])) }, [g("div", { class: "modal modal-sheet", style: M({ "--maxHeight": e2.initialBreakpoint ? `${Math.round(100 * e2.initialBreakpoint)}%` : "unset" }) }, [C(e2.$slots, "default", { emitClose: e2.emitClose }, void 0, true), C(e2.$slots, "close", {}, void 0, true)], 4)], 38)], 16), [[D, e2.show]])];
+    return [y(g("div", f({ ref: "modalRef", role: "dialog", tabindex: "-1", "aria-modal": "true", "aria-label": "Modal window", class: [e2.CLASS_NAME, { [`${e2.CLASS_NAME}-show`]: e2.show }, { [`${e2.CLASS_NAME}-latest`]: e2.latest }], style: { transitionDuration: e2.transition } }, e2.$attrs), [g("div", { class: b(`${e2.CLASS_NAME}-content`), style: M({ transitionDuration: e2.transition, ...(_a = e2.mergeOptions) == null ? void 0 : _a.styleModalContent }), onMousedown: t2[0] || (t2[0] = w((...t3) => e2.onMouseDownDimmed && e2.onMouseDownDimmed(...t3), ["self"])), onMouseup: t2[1] || (t2[1] = w((...t3) => e2.onMouseUpDimmed2 && e2.onMouseUpDimmed2(...t3), ["self"])), onTouchmove: t2[2] || (t2[2] = w((t3) => e2.close(), ["self"])) }, [C(e2.$slots, "modal-head", {}, void 0, true), g("div", { class: "modal modal-sheet", style: M({ "--maxHeight": e2.initialBreakpoint ? `${Math.round(100 * e2.initialBreakpoint)}%` : "unset" }) }, [C(e2.$slots, "default", { emitClose: e2.emitClose }, void 0, true), C(e2.$slots, "close", {}, void 0, true)], 4)], 38)], 16), [[D, e2.show]])];
   }), _: 3 }, 16, ["name"])], 8, ["to", "disabled"])) : x("", true);
 }
-var N = A(_, [["render", $], ["__scopeId", "data-v-7286302d"]]);
+var N = A($, [["render", _], ["__scopeId", "data-v-39e2c762"]]);
 const R = "VueUniversalModal";
 const B = "vue-universal-modal";
 const V = (e2, t2 = {}) => {
